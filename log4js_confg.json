@@ -1,0 +1,20 @@
+{
+  "appenders": [
+    {
+      "type": "file",
+      "filename": "./logs/parseExcel.log",
+      "layout":"colored",
+      "maxLogSize": 20480,
+      "backups": 20,
+      "category": "parseExcel"
+    },
+    {
+      "type": "file",
+      "filename": "./logs/index.log",
+      "layout":"colored",
+      "maxLogSize": 20480,
+      "backups": 20,
+      "category": "nodemailer"
+    }
+  ]
+}

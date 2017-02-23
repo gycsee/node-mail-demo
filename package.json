@@ -1,0 +1,25 @@
+{
+  "name": "node-xlxs-mail",
+  "version": "1.0.0",
+  "description": "A demo that sending mails with the data extracted from excel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaiYiLiang/Node-xlxs-mail.git"
+  },
+  "keywords": ["node-xls","node-mail"],
+  "author": "CaiYiLiang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaiYiLiang/Node-xlxs-mail/issues"
+  },
+  "homepage": "https://github.com/CaiYiLiang/Node-xlxs-mail#readme",
+  "dependencies": {
+    "log4js": "^1.1.0",
+    "nodemailer": "^3.1.3",
+    "xlsx": "^0.8.4"
+  }
+}
