@@ -2,6 +2,9 @@
 
 Send mail with data extracted from excel   获取Excel里的邮件地址并发送邮件
 
+  >This script helped me send out 50 mails to inform those who registered freecodecamp meetup activities yesterday within 10 mins (Hit TIMEOUT issues sometimes for `ping mail.google.com` problem :( )
+  
+# Modules
   - nodemailer
   - node-xlsx
   - log4js
