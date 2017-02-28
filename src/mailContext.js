@@ -2,8 +2,8 @@ const host = "smtp.gmail.com";
 const domains = ["gmail.com", "googlemail.com"];
 const port = 465;
 
-const userAcount = "xxxx@gmail.com";
-const userPassword = "xxxx";
+const userAcount = "xxxxxx@gmail.com";
+const userPassword = "xxxxxx";
 
 const mailFrom = "Nickname xxxx@gmail.com" ;
 const subject = "This is sent by project:Node-xlxs-mail";

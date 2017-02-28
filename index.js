@@ -37,42 +37,42 @@ function sendMail(mailAddress){
                   ]
       };
 
-  /*
-    1.If callback argument is not set then the method returns a Promise object. 
-      Nodemailer itself does not use Promises internally but it wraps the return 
-      into a Promise for convenience.
-  */
-
    transport.sendMail(options)
-    .then(function(res){
+    .then(res => {
             console.log(res); 
             console.log(`Sucess！----------------------------------`);
             logger.info(`Success - ${res.accepted}`);
           }, 
-          function(err){
+          err => {
             failToSend.push(mailAddress);
             console.log(err); 
             logger.debug(`${err.errno} - ${mailAddress}`);
           }
      )
-    .then(function(){
+    .then(() => {
           if(failToSend.length)
           {console.log(`Failed to send mail to : ${failToSend} `)} 
          }  
      )
-    .catch(function(error) { console.log(error)}
+    .catch(err => { console.log(error)}
      );
     
 }
 
-/*
-    1.If the message includes several recipients 
-      then the message is considered sent if at least one recipient is accepted
-    2.To avoid mail service party block your mails when you sent to their port at a time 
-*/
 parseExcel.mailList.forEach(mailAddress => {
     setTimeout(sendMail, 5000 , mailAddress);
 });
+
+/*  funvtion:parseExcel.mailList.forEach()
+    1.If the message includes several recipients 
+      then the message is considered sent if at least one recipient is accepted
+    2.To avoid mail service party block your mails when you sent to their port at a time 
+    
+    transport.sendMail(options,cb)
+    3.If callback argument is not set then the method returns a Promise object. 
+      Nodemailer itself does not use Promises internally but it wraps the return 
+      into a Promise for convenience.
+*/
 
 
 
