@@ -7,6 +7,8 @@ const parseExcel = require('./src/parseExcel');
 log4js.configure('log4js_confg.json');
 var logger = log4js.getLogger('nodemailer');
 
+var failToSend = [];
+
 const transport = mail.createTransport({
       host: mailInfo.host,      //mail service mail host
       domains: mailInfo.domains,
@@ -20,7 +22,6 @@ const transport = mail.createTransport({
 });
 
 function sendMail(mailAddress){
-  return function(){
   let options = {
       from:mailInfo.mailFrom,
       to: mailAddress, 
@@ -29,32 +30,48 @@ function sendMail(mailAddress){
       attachments: 
                   [
                       {
-                          filename: 'QR.jpg',            // attachment_name
-                          path: 'img/QR.jpg',            // attachment_path
-                          cid : '00000001'               // cid index by mail
+                          filename: mailInfo.attachment01_filename,     // attachment_name
+                          path: mailInfo.attachment01_path,            // attachment_path
+                          cid : mailInfo.attachment01_cid              // cid index by mail
                       }
                   ]
       };
 
-    transport.sendMail(options,function (err, res) {
-      if(err) {
-               console.log(err); 
-               logger.debug(`${err.errno} - ${mailAddress}`); 
-              }
-      else {
-              console.log(res);
-              console.log(`Sucess！--------------------------
-                          `);
-              logger.info(`Success - ${res.accepted}`);
+  /*
+    1.If callback argument is not set then the method returns a Promise object. 
+      Nodemailer itself does not use Promises internally but it wraps the return 
+      into a Promise for convenience.
+  */
+
+   transport.sendMail(options)
+    .then(function(res){
+            console.log(res); 
+            console.log(`Sucess！----------------------------------`);
+            logger.info(`Success - ${res.accepted}`);
+          }, 
+          function(err){
+            failToSend.push(mailAddress);
+            console.log(err); 
+            logger.debug(`${err.errno} - ${mailAddress}`);
           }
-    });
+     )
+    .then(function(){
+          if(failToSend.length)
+          {console.log(`Failed to send mail to : ${failToSend} `)} 
+         }  
+     )
+    .catch(function(error) { console.log(error)}
+     );
     
-  }
 }
 
-//To avoid mail service party block your mails when you sent to their port at a time
-parseExcelmailList.forEach(mailAddress => {
-    setTimeout(sendMail(mailAddress), 5000);
+/*
+    1.If the message includes several recipients 
+      then the message is considered sent if at least one recipient is accepted
+    2.To avoid mail service party block your mails when you sent to their port at a time 
+*/
+parseExcel.mailList.forEach(mailAddress => {
+    setTimeout(sendMail, 5000 , mailAddress);
 });
 
 

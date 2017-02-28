@@ -3,10 +3,10 @@ const domains = ["gmail.com", "googlemail.com"];
 const port = 465;
 
 const userAcount = "xxxx@gmail.com";
-const userPassword = "xxxxxx";
+const userPassword = "xxxx";
 
-const mailFrom = "fcc樱桃妹 freecodecampguangzhou@gmail.com" ;
-const subject = "fcc-广州线下面基(25号-周六)提醒";
+const mailFrom = "Nickname xxxx@gmail.com" ;
+const subject = "This is sent by project:Node-xlxs-mail";
 
 var html_context = [];
 
@@ -16,6 +16,12 @@ html_context[2] = "<div><i>Github Repo: <a href='https://github.com/CaiYiLiang/N
 html_context[3] = "<div><i>如果你喜欢请给一个小星星star，我应该会高兴1小时-60分钟-3600秒O(∩_∩)O</i></div>";
 //......
 
+const attachment01_filename = "QR.jpg";
+const attachment01_path = "img/QR.jpg";
+const attachment01_cid = "00000001";
+// attachment02....
+
+
 exports.host = host;
 exports.domains = domains;
 exports.port = port;
@@ -24,3 +30,6 @@ exports.userPassword = userPassword;
 exports.mailFrom = mailFrom;
 exports.subject = subject;
 exports.html_context = html_context.join("");
+exports.attachment01_filename = attachment01_filename;
+exports.attachment01_path = attachment01_path;
+exports.attachment01_cid = attachment01_cid;
