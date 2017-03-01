@@ -3,10 +3,11 @@
 Send mail with data extracted from excel   获取Excel里的邮件地址并发送邮件
 
   >This script helped me send out 50 mails to inform those who registered freecodecamp meetup activities yesterday within 10 mins (Take so long time just because of TIMEOUT issues for `ping mail.google.com` problem : )
+  >Here is an <a href="http://www.jianshu.com/p/7a35fa90810f">article-CN</a> associated this project .
   
 # Modules
   - nodemailer
-  - node-xlsx
+  - node-xlsx 
   - log4js
 
 # Features
@@ -24,7 +25,23 @@ Send mail with data extracted from excel   获取Excel里的邮件地址并发�
 
 # Preparation
 - update emailAddress info or replace **test.xlxs** in root path
+- update **src/parseExcel.js** with current excel name or specify the column stored e-mail address 
 - update **src/mailContext.js**  with your own mail smtp service 
+
+├── index.js
+├── log4js_confg.json
+├── test.xlsx        `replace your excel with email-address`
+├── package.json
+├── .gitignore
+├── README.md
+├── src
+│ ├── mailContext.js `update your mail-info : your smtp mail service info`
+│ ├── parseExcel.js  `update excel name if excel is not named 'test.xlxs' & specify email column`
+├── logs
+│ ├── logs...
+├── img
+│ ├── imgs... 
+
 
 # Build
 ``` bash
