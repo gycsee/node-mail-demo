@@ -28,20 +28,22 @@ Send mail with data extracted from excel   获取Excel里的邮件地址并发�
 - update **src/parseExcel.js** with current excel name or specify the column stored e-mail address 
 - update **src/mailContext.js**  with your own mail smtp service 
 
+```
 ├── index.js
 ├── log4js_confg.json
-├── test.xlsx        `replace your excel with email-address`
+├── test.xlsx        **replace your excel with email-address**
 ├── package.json
 ├── .gitignore
 ├── README.md
 ├── src
-│ ├── mailContext.js `update your mail-info : your smtp mail service info`
-│ ├── parseExcel.js  `update excel name if excel is not named 'test.xlxs' & specify email column`
+│ ├── mailContext.js **update your mail-info : your smtp mail service info**
+│ ├── parseExcel.js  **update excel name if excel is not named 'test.xlxs' & specify email column**
 ├── logs
 │ ├── logs...
 ├── img
 │ ├── imgs... 
 
+```
 
 # Build
 ``` bash
