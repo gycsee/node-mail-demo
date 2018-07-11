@@ -18,14 +18,35 @@ const mailInfo = XLSX.utils.sheet_to_json(worksheet);
 //Record the mailList update time
 logger.warn(`Refresh mailList at:${(new Date()).toDateString()}`); 
 var mailList = [];
-
+var mailHtmlContentList = [];
 mailInfo.forEach(el => {
-	                    let index = Object.keys(el);
-	                    mailList.push(el[index[2]]); //mail address column
-	                    logger.info(`Push ${el[index[2]]} into mailList scuessfully`);
-	                    }
-	             );
+	// console.log(JSON.stringify(el));
+	let entry = Object.entries(el);
+	let content = '';
+	let email = '';
+	let name = '';
+	entry.forEach((item) => {
+		switch (item[0]) {
+			case '邮箱':
+				email = item[1];
+				break;
+			case '姓名':
+				name = item[1];
+				break;
+			case '序号':		
+				break;
+			default:
+				content += `${item[0]}: ${item[1]}<br/> `;
+				break;
+		}
+	})
+	console.log(content);
+	mailList.push(email); //mail address
+	mailHtmlContentList.push(`<h3>hi, ${name}:</h3><p>工资单如下</p>${content}`); //mail content
+	logger.info(`Push ${email} into mailList scuessfully`);
+});
 
 console.log(mailList);
 
 exports.mailList =  mailList;
+exports.mailHtmlContentList =  mailHtmlContentList;

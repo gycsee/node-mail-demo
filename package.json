@@ -6,17 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CaiYiLiang/Node-xlxs-mail.git"
-  },
-  "keywords": ["node-xls","node-mail"],
-  "author": "CaiYiLiang",
+  "keywords": [
+    "node-xls",
+    "node-mail"
+  ],
+  "author": "gan",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CaiYiLiang/Node-xlxs-mail/issues"
-  },
-  "homepage": "https://github.com/CaiYiLiang/Node-xlxs-mail#readme",
   "dependencies": {
     "log4js": "^1.1.0",
     "nodemailer": "^3.1.3",
